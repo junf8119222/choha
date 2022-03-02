@@ -14,7 +14,7 @@ public class Day02_2
 	char c1 = 'a'; System.out.println( c1 );
 	char c2 = 97; System.out.println( c2 );		//10진수 표현
 		//정수 -> 문자 변환
-	char c3 ='\u0041'; System.out.println( c3 );	//16진수 표현 :	\u
+	char c3 ='\u0041'; System.out.println( c3 );	//16진수 표현 :	
 	char c4 = '가'; System.out.println( c4 );
 	char c5 = 44032; System.out.println( c5 );
 	char c6 = '\uac00'; System.out.println( c6 );
@@ -24,23 +24,23 @@ public class Day02_2
 		//10진수 : 0 ~ 9
 		//16진수 : 0 ~ 9 a b c d e f
 	
-	short num1 = 30000; System.out.println( num2 );
+	short num1 = 30000; System.out.println( num1 );
 	
 	int num2 = 10; System.out.println( num2 ); //10진수
 	int num3 = 012; System.out.println( num3 );// 8진수는 앞에 0 붙이기
 	int num4 =0xA;	System.out.println(	num4 ); //16진수는 앞에 0x 붙이기
 	
-	long num5 = 10000000000;	System.out.println( num5);		
-	[데이터 뒤에 L] INT형 -> long형 
-	//
+	long num5 = 10000000000l;	System.out.println( num5);		
+	//[데이터 뒤에 L] INT형 -> long형 
+	
 	
 	//p.47~48 float[ 데이터 뒤에 f ] : 4바이트 / double (실수 기본타입): 8바이트 ;17자리
 	//뭐가 더 크다만 알면 됨
 	double num6 = 3.14; System.out.println( num6 );
 	float num7 = 3.14f; System.out.println( num7 );
 	
-	double num8 = 
-	float num9 =123456789
+	double num8 = 0.123456789123456789;
+	float num9 =0.123456789123456789f;
 	
 	//p.48 boolean : 1비트 [true 혹은 false]
 		//스위치 : on, off
@@ -53,12 +53,12 @@ public class Day02_2
 				//큰상자에서 작은 상자로 이동 불가
 			byte 바이트 = 10;
 			int 인트 = 바이트;//자동 형변환 o
-			short 쇼트= 인트;//자동 형변환 x 오류 발생
+			//short 쇼트= 인트;//자동 형변환 x 오류 발생
 	
 			//2. 강제 형변환 ( 캐스트 )
 				//큰 상자에서 작은 상자로 이동 가능인데... 단 : 데이터 손실
 				//(변경할자료형)변수명
-			short 쇼트 = short(인트)// int형 변수를 short로 변환하는데 데이터 잘림
+			short 쇼트 = (short)인트;// int형 변수를 short로 변환하는데 데이터 잘림
 					
 }
 

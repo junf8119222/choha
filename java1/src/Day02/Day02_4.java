@@ -6,7 +6,7 @@ public class Day02_4 {
 	
 	public static void main(String[] args) {
 		//1.입력->저장>출력//세고 빼고
-		Scanner scanner = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in); 
 		//2.입력받을 데이터 -> 변수로 이동		
 		System.out.println("금액 : ");	int 금액 = scanner.nextInt();
 		//3.연산
@@ -34,9 +34,9 @@ public class Day02_4 {
 		
 		//문제11 키와 몸무게를 입력받아 BMI 출력하기
 				//BMI 계산식 => 몸무게/((키/100)*(키/100))
-		System.out.println("문제11) 키 :"); int 키 = scanner.nextInt();
+		System.out.println("문제11) 키 :"); int 키2 = scanner.nextInt();
 		System.out.println("문제11) 몸무게 : "); int 몸무게 =scanner.nextInt();
-		System.out.println("BMI: " + 몸무게/((키/100)*(키/100)));
+		System.out.println("BMI: " + 몸무게/((키2/100)*(키2/100)));
 		//double 로하는게 낫다 키/100.0로 계산 마지막 printf
 		
 		//문제12 inch를 입력받아 cm로 고치기
@@ -49,11 +49,11 @@ public class Day02_4 {
 			//소수 둘째 자리까지 점수 출력하기
 		//중간고사 반영비율 =>30% //기말고사 반영비율 =>30%  //수행평가 반영비율 => 40%
 		
-		System.out.print(" 문제13) 중간고사 : "); double 중간고사 = scanner.nextdouble();
+		System.out.print(" 문제13) 중간고사 : "); double 중간고사 = scanner.nextDouble();
 		System.out.print(" 문제13) 기말고사 : "); double 기말고사 = scanner.nextDouble();
 		System.out.print(" 문제13) 수행평가 : "); double 수행평가 = scanner.nextDouble();
 		중간고사 = 중간고사 * 0.3; 기말고사 *=0.3; 수행평가 *=0.4;
-		System.out.printf(" 반영비율 총점 :%.f \n" , (중간고사+기말고사+수행평가)
+		System.out.printf(" 반영비율 총점 :%.f \n" , (중간고사+기말고사+수행평가));
 		//문제14
 		//
 		
