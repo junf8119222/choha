@@ -57,6 +57,7 @@ public class Day_1 {
 		if( 3>2 ) System.out.println("예5) 3이 2보다 크다.");
 		if( 3<2 ) System.out.println("true 없다.");//실행 x 5개 패키지 효율x
 		// 경우에 따라 결과가 여러가지인 경우
+		
 	}
 	}
 		

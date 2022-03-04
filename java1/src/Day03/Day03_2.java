@@ -35,6 +35,18 @@ public class Day03_2 {
 		System.out.println("정수3입력:");	int 정수5 = scanner.nextInt();
 		int max = 정수3;// 가장 큰수를 저장하는 임시 저장
 		
+		//문제3: 4개의 정수를 입력받아서 가장 큰수 출력
+		System.out.println("정수1입력:"); int 정수6 = scanner.nextInt();
+		System.out.println("정수2입력:"); int 정수7 = scanner.nextInt();
+		System.out.println("정수3입력:"); int 정수8 = scanner.nextInt();
+		System.out.println("정수4입력:"); int 정수9 = scanner.nextInt();
+		int max2 = 정수6;
+		if( max2 < 정수7 ) { max2 = 정수7; }
+		if( max2 < 정수8 ) { max2 = 정수8; }
+		if( max2 < 정수9 ) { max2 = 정수9; }
+		System.out.println(" 가장 큰수 : "+ max2 );
+				
+		
 		
 		//문제5: 4개의 정수를 입력받아서 오름차순 /내림차순
 				System.out.println("정수1입력:"); int 정수13 = scanner.nextInt();//변수명 중복x
