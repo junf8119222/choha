@@ -43,16 +43,27 @@ public class Member {
 				//*회원번호 자동부여[마지막회원에 회원의 번호+1]
 					int bno =0; //회원번호 저장하는 변수
 					int j =0;//반복횟수[인덱스]
-				for(Member temp: Day07_5_BookApplication.members) {
-					if(temp==null) {//null 찾기[null 찾았을때 null-1 하면 마지막 회원]
-						bno= 1; break;//끝내기
+				for(Member temp : Day07_5_BookApplication.members) {
+					if(temp != null && temp.id.equals(id)) {//null 찾기[null 찾았을때 null-1 하면 마지막 회원]
+						System.out.println("알림)) 현재 사용중인 아이디입니다.");//끝내기
+						return false;//함수종료-->아이디가 중복되었기 때문에 false[가입실패]
+					}	
 				}
-					else {//첫번째 회원이 아니면
-						bno= Day07_5_BookApplication.members[j-1].mno+1;//null 앞[마지막회원]번호에+1
-						break;//끝내기
+				//*회원번호 자동부여[ 가장 최근에 가입한 회원[마지막회원]의 번호 + 1]
+				int bno =0;
+				int j =0;//반복횟수[인덱스]
+				for(member temp :Day07_5_BookApplication.members) {
+					if(temp==null) {//첫번째 인덱스[0번인덱스]가 null=> 첫회원 => 첫회원번호 =1부여
+						bno =1; break;//끝내기
 					}
-					j++//인덱스 증가
-				}	
+					else {//첫번째 회원이 아니면
+						bno = Day07_5_BookApplication.members[j-1].mno+1;//null 앞[마지막회원]번호에 +1
+						break; //끝내기
+					}
+				}
+				j++;//인덱스 증가
+			}
+			
 			//2.4개변수->객체화->1개
 			Member member= new Member(0, id, password, name, phone);//모든 필드를 받는 생성자로 객체 생성
 			//3.배열내 빈 공간을 찾아서 새로운 회원[객체]넣기

@@ -2,6 +2,8 @@ package Day07;
 
 import java.util.Scanner;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 public class Day07_5_BookApplication {
 	
 	//BookApplication 클래스: 입출력 관련코드
@@ -28,12 +30,12 @@ public class Day07_5_BookApplication {
 		//static: 프로그램 종료시까지 메모리 할당
 			//프로그램 시작시 메모리 할당/ 프로그램 종료시 메모리 초기화
 			//왜???:프고르ㅐㅁ 전반적으로 모든곳에서 사용되는 메모리[변수]	
-	//0.코드를 읽어주는 시작 메소드[스레드]
 	
-	static Scanner scanner =new Scanner(System.in);
+	static Scanner scanner =new Scanner(System.in);//static 모든곳에서 사용하는
 	static  Member[] members =new Member[100];
+	static Book[] books =new Book[1000];
 	
-	
+	//0.코드를 읽어주는 시작 메소드[스레드]
 	public static void main(String[] args) {// main s
 		
 		//메소드 호출
@@ -49,19 +51,34 @@ public class Day07_5_BookApplication {
 	
 	//1.초기 메뉴 메소드
 	void menu() {
-		while(true) {
+		while(true) {//무한루프[종료조건 없음]
 			System.out.println("-------------------도서 대여 프로그램---------------------");
 			System.out.print("1.회원가입2.로그인3.아이디찾기4.비밀번호찾기:");
 			int ch = scanner.nextInt();
 			Member member = new Member();
 			if(ch==1) {
-				member.회원가입();//회원가입 메소드 호출
+				
+				boolean result =member.회원가입();//회원가입 메소드 호출
+				if(result) 
+					System.err.println("알림)) 회원가입 성공");
+				else 
+					System.err.println("알림)) 회원가입 실패");
 			}
 			else if(ch==2) {
-				member.로그인();//로그인 메소드 호출
-					//1.일반회원 메뉴 메소드 호출
+				String result =member.로그인();//로그인 메소드 호출
+			
+				if(result==null) {//로그인실패
+					System.out.println("알림))동일한 회원정보가 없습니다.");
+				}else if(result.equals("admin")) {//관리자
 					//2.관리자 메뉴 메소드 호출
-			}
+					System.out.println("알림)) 안녕하세요~"+result+"님");
+					adminmenu();//내부 메소드 호출
+				}else {//일반
+					//1.일반회원 메뉴 메소드 호출
+					System.out.println("알림))안녕하세요~"+result+"님");
+			
+				}
+			}	
 			else if(ch==3) {
 				member.아이디찾기();//아이디 찾기 메소드 호출
 			}
@@ -69,17 +86,39 @@ public class Day07_5_BookApplication {
 				member.비밀번호찾기();//비밀번호 찾기 메소드 호출
 			}
 			else {
-				System.out.println("알림)) 알 수 없는 번호입니다.");
-			}
+				System.out.println("알림)) 알 수 없는 번호입니다.");}
+			
 		}
 	
 	}//menu e
 	//2.일반회원 메뉴 메소드
 	void membermenu() {
-		
-	}
+		while(true) {
+			System.out.println("-------------회원 메뉴------------");
+			System.out.println("1.도서검색2.도서목록3.도서대여4.도서반납5.로그아웃 선택:");
+			int ch = scanner.nextInt();
+				Book book = new Book();//빈생성자로 객체 =>메소드 호출용
+			if(ch==1)		{book.도서검색();}
+			else if(ch==2)	{book.도서목록();}
+			else if(ch==3)	{book.도서대여();}
+			else if(ch==4)	{book.도서반납();}
+			else if(ch==5)	{return;}//일반회원메뉴 메소드 종료[로그아웃]
+			else System.err.println("알림))알수 없는 번호입니다.");
+		}
+	}//일반회원 메뉴 종료
 	//3.관리자 메뉴 메소드
 	void adminmenu() {
+		while(true) {
+			System.out.println("------------관리자 메뉴----------------");
+			System.out.print("1.도서등록 2.도서목록 3.도서삭제 4.로그아웃 선택:");
+			int ch =scanner.nextInt();
+				Book book = new Book();
+			if(ch==1)	{book.도서등록();}
+			else if(ch==2) {book.도서목록();}
+			else if(ch==3) {book.도서삭제 ();}
+			else if(ch==4) {return;}//관리자메뉴 메소드 종료
+			else {System.err.println("알림))알수 없는 번호입니다.");
+		}
 		
 	}
 }//class e
