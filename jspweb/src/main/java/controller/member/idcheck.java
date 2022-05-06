@@ -12,7 +12,7 @@ import dao.MemberDao;
 /**
  * Servlet implementation class idcheck
  */
-@WebServlet("/idcheck")
+@WebServlet("/member/idcheck")
 public class idcheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,25 +28,31 @@ public class idcheck extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8"); 	// 요청시 사용되는 인코딩타입 [ 한글 ] 
+		System.out.println("js와 통신"); // 통신 테스트
+		
+		request.getParameter("UTF-8"); 	// 요청시 사용되는 인코딩타입 [ 한글 ] 
 		String mid = request.getParameter("mid"); // 데이터 요청 
+		
+			System.out.println( mid ); // JS에서 데이터 가져오기 확인
+		
 		// 1. dao를 통해 동일한 아이디가 있는지 체크 
-		boolean result 
-			=  MemberDao.getmemberDao().idcheck(mid);
-		if( result ) { // 2. 만약에 동일한 아이디가 있으면 1 없으면 2 
+		boolean result = MemberDao.getmemberDao().idcheck(mid);
+		
+		// 2. 만약에 동일한 아이디가 있으면 1 없으면 2 
+		if(result) {
 			response.getWriter().print( 1 );
 		}else {
 			response.getWriter().print( 2 );
 		}
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-	
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
 }
-
-
-
-

@@ -43,28 +43,24 @@ $(function(){	//문서 열리면 해당 코드가 실행
 			//아이디 중복체크
 				//비동기식 통신 [목적 : 페이지 전환이 없이 java랑(controller) 통신]
 			//$.ajax({ 속성 = 속성값, 속성 = 속성값})//jquery 에서 제공해주는 메소드
-			$.ajax({ 
-				url : "../idcheck", //보내는위치[서블릿경로] //해당서블릿의 (통신할)경로 //(서블릿파일과 통신함)
-				data : { "mid" : mid } , //해당 경로로 보내는(통신할때) 보내는 데이터
-				success : function( result ){//해당 경로에서 받은 데이터 //통신 성공후 받는 데이터
-					alert("java와 통신");
-						// 받은 데이터 확인 
-					alert("java에서 받은 데이터 : " + result );
+			alert("Awd");
+			$.ajax({
+				url : "../idcheck" , // 보내는 위치 [ 서블릿 경로 ]
+				data : { "mid" : mid } , // 보내는 데이터  { "변수명" : 값 }
+				success : function( result ){ // 통신 성공 했을경우 (  result = 받은 값 변수 )
 					if( result == 1 ){ // 만약에 받은 데이터가 1이면
 						idcheck.innerHTML="사용중인 아이디 입니다.";
-						pass[0]=false;
 					}else{ // 만약에 받은 데이터가 1이 아니면
 						idcheck.innerHTML="사용가능한 아이디 입니다.";
-						pass[0]=true;
 					}
 				}
-			});	//ajax end
+			});
 			
 		}else{
 			idcheck.innerHTML = "영문 , 숫자 포함 5~15길이로 입력해주세요.";
 		}
 	});//keyup end
-	
+		
 	// 비밀번호 체크 
 	$("#mpassword").keyup( function(){  // 비밀번호 입력할때마다
 		// let mpassword = document.getElementById("mpassword").value;  // js식
